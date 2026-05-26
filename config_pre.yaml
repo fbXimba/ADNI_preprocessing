@@ -1,0 +1,21 @@
+# Configuration file for ADNI preprocessing and quality control via snakemake or command line
+
+directories:
+  subj_dir: ADNI/127_S_0260
+  input_dir: ADNI
+  output_dir: ADNI_processed
+  fs_dir: ADNI_processed/freesurfer_subjects
+  img_dir: ADNI_processed/processed_images_head
+  dataset_dir: ADNI_processed/ADNI_dataset_head  # Directory for final dataset storage for model training
+
+snakemake:
+  subj_range: [0,625] #625
+  csv_file: "final_subjects.csv"
+
+preprocessing:
+  min_mask_voxels: 10000
+  out_shape: [128, 128, 128]
+  pad: 2 
+  norm_perc: [0.1, 99.9]
+  norm_range: [-1.0, 1.0]
+
